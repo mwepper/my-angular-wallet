@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success">New Company</button>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-5">
+      <ul class="list-group">
+        <a
+          href="#"
+          class="list-group-item clearfix" style="cursor: pointer"
+           *ngFor="let soc of societes"
+        (click)="onSelected(soc)"
+        >
+          {{soc.codeIsin}} - {{soc.raisonSociale}} ({{soc.secteur}})
+        </a>
+      </ul>
+    </div>
+    <div class="col-md-5">
+      <app-societe-item
+        *ngIf="socSelected; else infoText"
+        [societeDetail]="socSelected">
+      </app-societe-item>
+      <ng-template #infoText>
+        <p>Veuillez choisir une société</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
